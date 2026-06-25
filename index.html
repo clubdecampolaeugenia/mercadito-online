@@ -206,11 +206,8 @@
   <div class="hero">
     <img class="toldo-hero" src="https://i.imgur.com/1BmESsb.png" alt="La Eugenia Tienda Online">
     <div class="hero-body">
-      <div class="hero-badge">
-        <div class="hero-badge-inner">LA EUGENIA</div>
-      </div>
       <div class="hero-logo-wrap">
-        <img class="hero-logo" src="https://i.imgur.com/Ozc2v2v.png" alt="La Eugenia Tienda Online">
+        <img class="hero-logo" src="https://i.imgur.com/mGr7Zx2.png" alt="La Eugenia Tienda Online">
       </div>
       <p class="hero-desc">La Tienda Online del Club pone a disposición de los socios productos que representan un aporte individual y, al mismo tiempo, una contribución colectiva para seguir mejorando nuestro entorno.</p>
       <p class="hero-inst">Elegí los productos disponibles, realizá tu pedido y retiralo en la garita.</p>
@@ -281,7 +278,7 @@
 
 <!-- ══ IDENTIFICACIÓN ══ -->
 <div class="screen" id="s-identificacion">
-  <div class="toldo-interno"><img src="https://i.imgur.com/o7CE0ga.png" alt=""></div>
+  <div class="toldo-interno"><img src="https://i.imgur.com/AlHgkPH.png" alt=""></div>
   <div class="topbar">
     <button class="topbar-back" onclick="goTo('s-home')">← Volver</button>
     <span class="topbar-title">Tus datos</span>
@@ -327,7 +324,7 @@
 
 <!-- ══ PAGO ══ -->
 <div class="screen" id="s-pago">
-  <div class="toldo-interno"><img src="https://i.imgur.com/o7CE0ga.png" alt=""></div>
+  <div class="toldo-interno"><img src="https://i.imgur.com/AlHgkPH.png" alt=""></div>
   <div class="topbar">
     <button class="topbar-back" onclick="goTo('s-identificacion')">← Volver</button>
     <span class="topbar-title">Forma de pago</span>
@@ -362,7 +359,7 @@
 
 <!-- ══ CONFIRMACIÓN ══ -->
 <div class="screen" id="s-confirmacion">
-  <div class="toldo-interno"><img src="https://i.imgur.com/o7CE0ga.png" alt=""></div>
+  <div class="toldo-interno"><img src="https://i.imgur.com/AlHgkPH.png" alt=""></div>
   <div class="topbar">
     <button class="topbar-back" onclick="goTo('s-home')">← Volver al inicio</button>
     <span class="topbar-title">Tu pedido</span>
@@ -385,6 +382,8 @@
       <button class="btn btn-naranja" id="btn-wsp-confirm" style="font-size:13px;">📲 ENVIATE LOS DATOS POR WHATSAPP</button>
     </div>
 
+    <p id="confirm-sub-texto" style="font-size:12px;color:var(--hueso);text-align:center;line-height:1.6;margin-bottom:14px;"></p>
+
     <div class="confirm-aviso">
       <p>⚠️ Tus productos quedaron reservados. Si necesitás cancelar este pedido, tocá el botón de abajo antes de salir de esta pantalla. Después de eso, deberás acercarte personalmente a garita para hacerlo.</p>
       <button class="btn btn-cancelar" onclick="mostrarPopupCancelar()">CANCELAR PEDIDO</button>
@@ -400,7 +399,7 @@
 
 <!-- ══ LISTA DE ESPERA ══ -->
 <div class="screen" id="s-espera">
-  <div class="toldo-interno"><img src="https://i.imgur.com/o7CE0ga.png" alt=""></div>
+  <div class="toldo-interno"><img src="https://i.imgur.com/AlHgkPH.png" alt=""></div>
   <div class="topbar">
     <button class="topbar-back" onclick="goTo('s-home')">← Volver al inicio</button>
     <span class="topbar-title">Lista de espera</span>
@@ -433,7 +432,7 @@
 
 <!-- ══ PANEL GARITA ══ -->
 <div class="screen" id="s-garita">
-  <div class="toldo-interno"><img src="https://i.imgur.com/o7CE0ga.png" alt=""></div>
+  <div class="toldo-interno"><img src="https://i.imgur.com/AlHgkPH.png" alt=""></div>
   <div class="topbar">
     <button class="topbar-back" onclick="goTo('s-home')">← Volver al inicio</button>
     <span class="topbar-title">Panel Garita</span>
@@ -476,7 +475,7 @@
 
 <!-- ══ PANEL ADMIN ══ -->
 <div class="screen" id="s-admin">
-  <div class="toldo-interno"><img src="https://i.imgur.com/o7CE0ga.png" alt=""></div>
+  <div class="toldo-interno"><img src="https://i.imgur.com/AlHgkPH.png" alt=""></div>
   <div class="topbar">
     <button class="topbar-back" onclick="goTo('s-home')">← Volver al inicio</button>
     <span class="topbar-title">Panel Admin</span>
@@ -745,13 +744,14 @@
     document.getElementById('num-ped').textContent = num;
     document.getElementById('badge-tipo').textContent = pagoSel === 'ef' ? 'EFECTIVO' : 'TRANSFERENCIA';
 
-    // Intro — primera línea en negrita, reserva en lima separada
-    var intro = '<span class="titulo-bold">¡Tu pedido está confirmado!</span>' +
-      'Guardá tu ticket o enviátelo por WhatsApp para mostrárselo al guardia al retirar.';
+    // Intro — solo el titular y la fecha de reserva
+    var intro = '<span class="titulo-bold">¡Tu pedido está confirmado!</span>';
     if (pagoSel === 'ef') {
       intro += '<span class="reserva-linea">Tus productos estarán reservados hasta el ' + vence + ' (inclusive).</span>';
     }
     document.getElementById('confirm-intro-texto').innerHTML = intro;
+    // Texto instructivo debajo del card
+    document.getElementById('confirm-sub-texto').textContent = 'Guardá tu ticket o enviátelo por WhatsApp para mostrárselo al guardia al retirar.';
 
     // Ticket
     var itemsHtml = items.map(function(i){
