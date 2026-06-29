@@ -227,8 +227,8 @@
       <div class="hero-logo-wrap">
         <img class="hero-logo" src="https://i.imgur.com/fm6890B.png" alt="Stock del Club">
       </div>
-      <p class="hero-desc">El Stock del Club facilita a los socios el acceso ágil a una selección de productos e insumos útiles para el cuidado, el orden y la mejora de nuestro entorno</p>
-      <p class="hero-inst">Elegí los productos disponibles, realizá tu pedido y retiralo en la garita</p>
+      <p class="hero-desc">Stock del Club facilita a los socios el acceso ágil a una selección de productos, insumos y campañas especiales útiles para el cuidado, el orden y la mejora de nuestro entorno</p>
+      <p class="hero-inst">Elegí lo disponible, realizá tu pedido o reserva y retiralo en la garita</p>
     </div>
   </div>
 
@@ -324,7 +324,7 @@
     <div style="display:flex;flex-direction:column;gap:14px;">
       <div style="display:flex;align-items:flex-start;gap:12px;"><div style="background:var(--naranja);color:var(--petroleo);font-family:Impact,sans-serif;font-size:16px;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</div><div style="color:var(--hueso);font-size:13px;line-height:1.6;padding-top:4px;">Elegí los productos y agregá al carrito.</div></div>
       <div style="display:flex;align-items:flex-start;gap:12px;"><div style="background:var(--naranja);color:var(--petroleo);font-family:Impact,sans-serif;font-size:16px;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div><div style="color:var(--hueso);font-size:13px;line-height:1.6;padding-top:4px;">Completá tus datos: nombre, lote y teléfono.</div></div>
-      <div style="display:flex;align-items:flex-start;gap:12px;"><div style="background:var(--naranja);color:var(--petroleo);font-family:Impact,sans-serif;font-size:16px;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div><div style="color:var(--hueso);font-size:13px;line-height:1.6;padding-top:4px;">Elegí cómo pagás: <strong style="color:var(--lima);">efectivo en garita</strong> o <strong style="color:var(--lima);">transferencia</strong>.</div></div>
+      <div style="display:flex;align-items:flex-start;gap:12px;"><div style="background:var(--naranja);color:var(--petroleo);font-family:Impact,sans-serif;font-size:16px;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div><div style="color:var(--hueso);font-size:13px;line-height:1.6;padding-top:4px;">El pago es <strong style="color:var(--lima);">en efectivo al retirar en garita</strong>.</div></div>
       <div style="display:flex;align-items:flex-start;gap:12px;"><div style="background:var(--naranja);color:var(--petroleo);font-family:Impact,sans-serif;font-size:16px;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">4</div><div style="color:var(--hueso);font-size:13px;line-height:1.6;padding-top:4px;">Retirá en garita con tu número de pedido.</div></div>
     </div>
   </div>
@@ -737,13 +737,9 @@
   </div>
   <div class="sec-crema" style="flex:1;">
     <div id="depo-selbar-pago" style="background:var(--verdecl);border:2px solid var(--petroleo);border-radius:10px;padding:12px 14px;margin-bottom:14px;"></div>
-    <div class="pago-opt selected" id="depo-po-ef" onclick="depoSelPago('ef')">
-      <div class="pago-radio on" id="depo-pr-ef"></div>
-      <div><div class="pago-titulo">Pago en garita</div><div class="pago-desc">Tus números quedan reservados por 7 días — abonás y retirás el talón físico del Deporbono en garita</div></div>
-    </div>
-    <div class="pago-opt" id="depo-po-tr" onclick="depoSelPago('tr')">
-      <div class="pago-radio" id="depo-pr-tr"></div>
-      <div><div class="pago-titulo">Transferencia bancaria</div><div class="pago-desc">Transferís el importe, mandás el comprobante a garita y retirás el talón cuando quieras</div></div>
+    <div style="background:var(--verdecl);border:2px solid var(--petroleo);border-radius:10px;padding:14px;margin-bottom:14px;">
+      <div style="font-size:13px;font-weight:700;color:var(--petroleo);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;">Efectivo al retirar</div>
+      <div style="font-size:12px;color:var(--petroleo);line-height:1.5;">Se abona en efectivo contra entrega en garita — los números quedan reservados por 7 días</div>
     </div>
     <button class="btn btn-naranja" onclick="depoConfirmar()">Confirmar reserva →</button>
   </div>
@@ -821,7 +817,7 @@
 <script>
   var carrito = [];
   var pedNum  = 1;
-  var pagoSel = 'ef';
+  var pagoSel = 'ef'; // única opción disponible
   var datosConfirm = {};
 
   // IDs de cajones con indicador de selección
@@ -1094,7 +1090,7 @@
   var depoSeleccion = [];
   var depoPropuestaFlash = [];
   var depoPedNum = 1;
-  var depoPagoSel = 'ef';
+  var depoPagoSel = 'ef'; // única opción disponible
   var depoFlashGirando = false;
 
   // 20 números placeholder — se reemplazarán con datos reales del backend
