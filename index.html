@@ -391,27 +391,9 @@
   </div>
   <div class="sec-crema" style="flex:1;padding-bottom:28px;">
     <div class="cart-resumen" id="resumen-pago" style="display:none;"></div>
-    <div class="pago-opt selected" id="opt-ef" onclick="selPago('ef')">
-      <div class="pago-radio on" id="r-ef"></div>
-      <div>
-        <div class="pago-titulo">Efectivo al retirar</div>
-        <div class="pago-desc">Pagás cuando venís a buscar el producto a garita — el pedido se reserva por 48 horas</div>
-      </div>
-    </div>
-    <div class="pago-opt" id="opt-tr" onclick="selPago('tr')">
-      <div class="pago-radio" id="r-tr"></div>
-      <div>
-        <div class="pago-titulo">Transferencia bancaria</div>
-        <div class="pago-desc">Transferís y mandás el comprobante al grupo de garita — sin límite de tiempo para retirar</div>
-      </div>
-    </div>
-    <div id="datos-banco" style="display:none;">
-      <div class="banco-card">
-        <div class="banco-row"><span class="banco-label">ALIAS</span><span class="banco-val">DELFIN.COCINA.MANTO</span></div>
-        <div class="banco-row"><span class="banco-label">CBU</span><span class="banco-val">1910229855022900048696</span></div>
-        <div class="banco-row"><span class="banco-label">CUIT</span><span class="banco-val">30-63417128-9</span></div>
-      </div>
-      <p style="font-size:12px;color:var(--gris);line-height:1.6;margin-bottom:12px;">Transferí el monto exacto y luego confirmá el pedido para notificar a garita</p>
+    <div style="background:var(--blanco);border:2px solid var(--petroleo);border-radius:10px;padding:14px;margin-bottom:14px;">
+      <div style="font-size:13px;font-weight:700;color:var(--petroleo);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;">Efectivo al retirar</div>
+      <div style="font-size:12px;color:var(--gris);line-height:1.5;">Se abona en efectivo contra entrega en garita — el pedido queda reservado por 48 horas</div>
     </div>
     <button class="btn btn-naranja" id="btn-pagar" onclick="confirmar()">CONFIRMAR PEDIDO →</button>
   </div>
@@ -737,9 +719,10 @@
   </div>
   <div class="sec-crema" style="flex:1;">
     <div id="depo-selbar-pago" style="background:var(--verdecl);border:2px solid var(--petroleo);border-radius:10px;padding:12px 14px;margin-bottom:14px;"></div>
-    <div style="background:var(--verdecl);border:2px solid var(--petroleo);border-radius:10px;padding:14px;margin-bottom:14px;">
+    <div style="background:var(--blanco);border:2px solid var(--petroleo);border-radius:10px;padding:14px;margin-bottom:14px;">
       <div style="font-size:13px;font-weight:700;color:var(--petroleo);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;">Efectivo al retirar</div>
-      <div style="font-size:12px;color:var(--petroleo);line-height:1.5;">Se abona en efectivo contra entrega en garita — los números quedan reservados por 7 días</div>
+      <div style="font-size:12px;color:var(--gris);line-height:1.5;">Se abona en efectivo contra entrega en garita</div>
+      <div style="font-size:12px;color:var(--gris);line-height:1.5;margin-top:4px;">Una vez reservados los números quedan bloqueados por 7 días</div>
     </div>
     <button class="btn btn-naranja" onclick="depoConfirmar()">Confirmar reserva →</button>
   </div>
@@ -1161,7 +1144,7 @@
   function depoRenderSelbar(elId) {
     var el = document.getElementById(elId);
     if (!el) return;
-    var conCruz = elId === 'depo-selbar-datos';
+    var conCruz = elId === 'depo-selbar-datos' || elId === 'depo-selbar-pago';
     var html = '<div style="font-family:Impact,sans-serif;font-size:12px;color:var(--petroleo);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;"><span>Mi selección</span><span style="font-size:10px;font-weight:400;font-family:Roboto,sans-serif;">'+depoSeleccion.length+' bono'+(depoSeleccion.length!==1?'s':'')+'</span></div>';
     if (depoSeleccion.length === 0) html += '<div style="font-size:11px;color:var(--gris);text-align:center;padding:4px 0;">Todavía no elegiste ningún número</div>';
     else {
@@ -1354,7 +1337,7 @@
       '<div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span>Socio</span><strong style="color:var(--petroleo);">'+nombre+'</strong></div>'+
       '<div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span>DNI</span><strong style="color:var(--petroleo);">'+dni+'</strong></div>'+
       '<div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span>Pago</span><strong style="color:var(--petroleo);">'+(depoPagoSel==='ef'?'Efectivo en garita':'Transferencia')+'</strong></div>'+
-      '<div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span>Reservado hasta</span><strong style="color:var(--petroleo);">'+vence+'</strong></div>'+
+      '<div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-weight:700;color:var(--petroleo);">Retirá antes del</span><strong style="color:var(--petroleo);">'+vence+'</strong></div>'+
       '';
 
     var bonosTexto = depoSeleccion.join(', ');
